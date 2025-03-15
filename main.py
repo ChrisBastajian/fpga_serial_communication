@@ -82,7 +82,7 @@ class App(ctk.CTk):
 
         #configuring size of buttons:
         for btn in op_btns:
-            btn.configure(width=200, height=150)
+            btn.configure(width=200, height=150, font=("times", 20))
 
         #Result Title:
         self.result_ttl = ctk.CTkLabel(text="Result:", master=self)
