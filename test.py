@@ -1,3 +1,1 @@
-import numpy as np
-
-print("Hello Ryan")
+print("Hello chris and smtg")
