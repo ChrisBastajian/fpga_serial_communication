@@ -106,7 +106,6 @@ class App(ctk.CTk):
     def add(self):
         print("add")
 
-
 if __name__ == "__main__":
     app = App()
     app.mainloop()
