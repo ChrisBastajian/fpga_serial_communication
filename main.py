@@ -1,5 +1,7 @@
 import customtkinter as ctk
 import numpy as np
+import serial
+import time
 
 ctk.set_appearance_mode("light_gray")
 
@@ -95,17 +97,70 @@ class App(ctk.CTk):
 
     #Functions:
     def xor(self):
+        sel = "00"
+        A = self.a_in.get()
+        B = self.b_in.get()
+        AB =  str(A) + str(B)
+        message = str(sel)+AB
+
+        #Send to COM port:
+        COM = self.com_btn.get()
+        self.send_to_serial(message, COM)
         print("xor")
 
     def ore(self):
+        sel = "01"
+        A = self.a_in.get()
+        B = self.b_in.get()
+        AB =  str(A) + str(B)
+        message = str(sel)+AB
+
+        #Send to COM port:
+        COM = self.com_btn.get()
+        self.send_to_serial(message, COM)
         print("ore")
 
-    def diff(self):
-        print("diff")
-
     def add(self):
+        sel = "10"
+        A = self.a_in.get()
+        B = self.b_in.get()
+        AB =  str(A) + str(B)
+        message = str(sel)+AB
+
+        #Send to COM port:
+        COM = self.com_btn.get()
+        self.send_to_serial(message, COM)
         print("add")
 
+    def diff(self):
+        sel = "11"
+        A = self.a_in.get()
+        B = self.b_in.get()
+        AB =  str(A) + str(B)
+        message = str(sel)+AB
+
+        #Send to COM port:
+        COM = self.com_btn.get()
+        self.send_to_serial(message, COM)
+        print("diff")
+
+
+
+    def send_to_serial(self, message, com):
+        usb_port = com
+
+        num_10bit = int(message, 2)
+        num_10bit = num_10bit & 0b1111111111  #mask to 10 bits
+        high_byte = (num_10bit >> 8) & 0b00000011  # Get top 2 bits
+        low_byte = num_10bit & 0xFF  # gets lower 8 bits
+
+        print(f"Sending: High Byte = {format(high_byte, '02b')}, Low Byte = {format(low_byte, '08b')}")
+        #Send as bytes:
+        ser = serial.Serial(usb_port, 9600, timeout=1) #for Basys3 baudrate=9600 is recommended
+        time.sleep(1) #for the connection to establish
+        ser.write(bytes([high_byte, low_byte]))
+
+        ser.close()
 if __name__ == "__main__":
     app = App()
     app.mainloop()
