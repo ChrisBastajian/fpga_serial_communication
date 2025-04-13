@@ -120,7 +120,7 @@ class App(ctk.CTk):
         self.send_to_serial(message, COM)
         print("ore")
 
-    def adde(self):
+    def ande(self):
         sel = "10"
         A = self.a_in.get()
         B = self.b_in.get()
