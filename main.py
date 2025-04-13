@@ -70,14 +70,14 @@ class App(ctk.CTk):
         self.or_btn = ctk.CTkButton(text="OR", master=self, command=self.ore) #cannot use or so I use ore lol
         self.add_btn = ctk.CTkButton(text="ADD", master=self, command=self.add)
         self.diff_btn = ctk.CTkButton(text="DIFFERENCE", master=self, command=self.diff)
-        op_btns = [self.xor_btn, self.or_btn, self.add_btn, self.diff_btn] #storing buttons
+        op_btns = [self.and_btn, self.or_btn, self.add_btn, self.diff_btn] #storing buttons
 
         #Position the buttons:
         num_ops = 4 #4 operations
         sep_x =  width/(num_ops+1) #dividing the geometry equally for x
         y_pos = 0.55*height #lowest y = height
 
-        self.xor_btn.place(x=sep_x, y=y_pos, anchor='center')
+        self.and_btn.place(x=sep_x, y=y_pos, anchor='center')
         self.or_btn.place(x=2*sep_x, y=y_pos, anchor='center')
         self.add_btn.place(x=3*sep_x, y=y_pos, anchor='center')
         self.diff_btn.place(x=4*sep_x, y=y_pos, anchor='center')
@@ -96,7 +96,7 @@ class App(ctk.CTk):
         self.result.configure(font=("times", 20, "bold"), width=0.9*width, height=0.01*height)
 
     #Functions:
-    def xor(self):
+    def ande(self):
         sel = "00"
         A = self.a_in.get()
         B = self.b_in.get()
@@ -120,7 +120,7 @@ class App(ctk.CTk):
         self.send_to_serial(message, COM)
         print("ore")
 
-    def adde(self):
+    def add(self):
         sel = "10"
         A = self.a_in.get()
         B = self.b_in.get()
