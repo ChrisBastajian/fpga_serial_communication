@@ -66,7 +66,7 @@ class App(ctk.CTk):
 
 
         #Create option buttons and have "self" as the master plus store in self to use them in functions
-        self.xor_btn = ctk.CTkButton(text="XOR", master=self, command=self.xor)
+        self.and_btn = ctk.CTkButton(text="AND", master=self, command=self.ande)
         self.or_btn = ctk.CTkButton(text="OR", master=self, command=self.ore) #cannot use or so I use ore lol
         self.add_btn = ctk.CTkButton(text="ADD", master=self, command=self.add)
         self.diff_btn = ctk.CTkButton(text="DIFFERENCE", master=self, command=self.diff)
@@ -120,7 +120,7 @@ class App(ctk.CTk):
         self.send_to_serial(message, COM)
         print("ore")
 
-    def add(self):
+    def adde(self):
         sel = "10"
         A = self.a_in.get()
         B = self.b_in.get()
