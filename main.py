@@ -1,5 +1,4 @@
 import customtkinter as ctk
-import numpy as np
 import serial
 import time
 
@@ -144,7 +143,8 @@ class App(ctk.CTk):
         self.send_to_serial(message, COM)
         print("diff")
 
-
+    def receive_from_serial(self):
+        return #remove this line when you add the code for this function (remove "return")
 
     def send_to_serial(self, message, com):
         usb_port = com
